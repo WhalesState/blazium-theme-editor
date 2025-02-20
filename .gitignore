@@ -1,0 +1,5 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+/addons/blazium_theme_editor/icons.cfg
+/addons/blazium_theme_editor/editor/data.cfg

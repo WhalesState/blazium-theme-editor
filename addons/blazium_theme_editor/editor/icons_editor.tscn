@@ -1,0 +1,143 @@
+[gd_scene load_steps=5 format=3 uid="uid://lw6g011sv40l"]
+
+[ext_resource type="Script" path="res://addons/blazium_theme_editor/editor/icons_editor.gd" id="1_4gqsw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qon3v"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.2, 0.23, 0.31, 1)
+border_color = Color(0.2, 0.23, 0.31, 1)
+corner_detail = 3
+anti_aliasing = false
+
+[sub_resource type="InputEventKey" id="InputEventKey_x3oe2"]
+device = -1
+ctrl_pressed = true
+keycode = 83
+unicode = 115
+
+[sub_resource type="Shortcut" id="Shortcut_gd6mb"]
+events = [SubResource("InputEventKey_x3oe2")]
+
+[node name="IconsEditor" type="Window"]
+title = "Blazium Icons Editor"
+position = Vector2i(0, 36)
+size = Vector2i(640, 480)
+wrap_controls = true
+min_size = Vector2i(320, 320)
+script = ExtResource("1_4gqsw")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qon3v")
+metadata/_edit_lock_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+metadata/_edit_lock_ = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="IconLabel" type="Label" parent="Panel/MarginContainer/HBoxContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "10k"
+horizontal_alignment = 1
+text_overrun_behavior = 3
+
+[node name="IconPreview" type="TextureRect" parent="Panel/MarginContainer/HBoxContainer2/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="UseAccentColor" type="CheckButton" parent="Panel/MarginContainer/HBoxContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Use Accent Color"
+alignment = 1
+text_overrun_behavior = 3
+
+[node name="SizeBox" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SizeLabel" type="Label" parent="Panel/MarginContainer/HBoxContainer2/VBoxContainer/SizeBox"]
+layout_mode = 2
+text = "Size"
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Selected"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/HBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="SelectedContainer" type="HFlowContainer" parent="Panel/MarginContainer/HBoxContainer2/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="SaveButton" type="Button" parent="Panel/MarginContainer/HBoxContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+shortcut = SubResource("Shortcut_gd6mb")
+text = "Save"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+
+[node name="SearchBox" type="LineEdit" parent="Panel/MarginContainer/HBoxContainer2/VBoxContainer2/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Filter icons"
+max_length = 32
+clear_button_enabled = true
+select_all_on_focus = true
+caret_blink = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/HBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="IconsContainer" type="HFlowContainer" parent="Panel/MarginContainer/HBoxContainer2/VBoxContainer2/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
