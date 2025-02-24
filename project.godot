@@ -10,13 +10,23 @@ config_version=5
 
 [application]
 
-config/name="Blazium Theme Editor"
+config/name="BlaziumThemeEditor"
+run/main_scene="res://example.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+UserIconsLoader="*res://addons/blazium_theme_editor/user_icons_loader.gd"
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/blazium_theme_editor/plugin.cfg")
+
+[gui]
+
+theme/custom_font="res://addons/blazium_theme_editor/fonts/Sriracha.ttf"
+theme/user_icons={}
 
 [rendering]
 

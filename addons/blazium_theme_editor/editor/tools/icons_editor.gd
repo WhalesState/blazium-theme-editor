@@ -2,7 +2,8 @@
 extends Window
 
 const DATA_PATH := "res://addons/blazium_theme_editor/editor/data.cfg"
-const ICONS_PATH := "res://addons/blazium_theme_editor/editor/icons/filled"
+const ICONS_DIR := "res://addons/blazium_theme_editor/editor/icons/filled"
+const ICONS_PATH := "gui/theme/user_icons"
 
 var def_theme := ThemeDB.get_default_theme()
 
@@ -48,10 +49,10 @@ func _ready() -> void:
 	var pnl: Panel = get_child(0) as Panel
 	pnl.add_theme_stylebox_override("panel", EditorInterface.get_editor_theme().get_stylebox("PanelForeground", "EditorStyles"))
 	search_box.right_icon = EditorInterface.get_editor_theme().get_icon("Search", "EditorIcons")
-	var icons_dir := DirAccess.open(ICONS_PATH)
+	var icons_dir := DirAccess.open(ProjectSettings.globalize_path(ICONS_DIR))
 	var sources = icons_dir.get_files()
 	for icon_file in sources:
-		var source = FileAccess.get_file_as_string(ICONS_PATH.path_join(icon_file))
+		var source = FileAccess.get_file_as_string(ICONS_DIR.path_join(icon_file))
 		var icon_button := IconButton.new(icon_file, source)
 		icons_container.add_child(icon_button)
 		icon_button.focus_entered.connect(_on_icon_selected.bind(icon_button.get_index()))
@@ -119,6 +120,7 @@ func _on_save_button_pressed():
 	var plugin := BlaziumThemePlugin.singleton
 	plugin.update_generated_icons(generated)
 	update_selected_icons()
+	ThemeDB.icons_changed.emit()
 	print(ThemeDB.get_user_icon_list())
 
 
@@ -179,6 +181,14 @@ class IconButton extends Button:
 		icon_source = icon_source.insert(pos + 11, " fill=\"%s\"")
 		source = icon_source
 		icon = generate_texture("white", 24, 2)
+
+
+	func _gui_input(event: InputEvent) -> void:
+		if not event is InputEventMouseButton:
+			return
+		if not (event.button_index == MOUSE_BUTTON_RIGHT && event.is_pressed()):
+			return
+		grab_focus()
 
 
 	func generate_texture(fill_color: String, base_size: int, scale: float) -> ImageTexture:
