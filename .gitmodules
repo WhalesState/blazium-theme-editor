@@ -1,3 +1,4 @@
+
 [submodule "icons"]
 	path = addons/blazium_theme_editor/editor/icons
-	url = https://github.com/blazium-engine/google-material-icons
+	url = https://github.com/blazium-engine/material-icons.git
