@@ -14,3 +14,4 @@
 * [Caveat Brush](https://fonts.google.com/specimen/Caveat+Brush)
 * [Kaushan Script](https://fonts.google.com/specimen/Kaushan+Script)
 * [Sriracha](https://fonts.google.com/specimen/Sriracha)
+* [Poetsen One](https://fonts.google.com/specimen/Poetsen+One)

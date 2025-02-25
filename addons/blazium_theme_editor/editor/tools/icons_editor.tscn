@@ -23,10 +23,9 @@ events = [SubResource("InputEventKey_x3oe2")]
 
 [node name="IconsEditor" type="Window"]
 title = "Blazium Icons Editor"
-position = Vector2i(0, 36)
-size = Vector2i(640, 480)
+size = Vector2i(640, 600)
 wrap_controls = true
-min_size = Vector2i(320, 320)
+min_size = Vector2i(640, 600)
 script = ExtResource("1_4gqsw")
 
 [node name="Panel" type="Panel" parent="."]
@@ -71,13 +70,41 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
-[node name="UseAccentColor" type="CheckButton" parent="Panel/MarginContainer/HSplitContainer/VBoxContainer"]
+[node name="ColorBox" type="HBoxContainer" parent="Panel/MarginContainer/HSplitContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="FontColorButton" type="Button" parent="Panel/MarginContainer/HSplitContainer/VBoxContainer/ColorBox"]
 unique_name_in_owner = true
 layout_mode = 2
-focus_mode = 0
-text = "Use Accent Color"
-alignment = 1
-text_overrun_behavior = 3
+size_flags_horizontal = 3
+theme_type_variation = &"FlatButton"
+toggle_mode = true
+button_pressed = true
+text = "Font"
+
+[node name="AccentColorButton" type="Button" parent="Panel/MarginContainer/HSplitContainer/VBoxContainer/ColorBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"FlatButton"
+toggle_mode = true
+text = "accent"
+
+[node name="CustomColorButton" type="Button" parent="Panel/MarginContainer/HSplitContainer/VBoxContainer/ColorBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"FlatButton"
+toggle_mode = true
+text = "custom"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Panel/MarginContainer/HSplitContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 1)
+edit_alpha = false
 
 [node name="SizeBox" type="HBoxContainer" parent="Panel/MarginContainer/HSplitContainer/VBoxContainer"]
 unique_name_in_owner = true
